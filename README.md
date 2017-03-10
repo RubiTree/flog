@@ -1,2 +1,2 @@
 # FLog
-A friendly, flexible, feature-rich and tasteful logger for Android.
+A friendly, flexible, feature-rich and fair logger for Android.
