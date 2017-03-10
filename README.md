@@ -15,9 +15,13 @@ releaseCompile 'com.github.SaltedfishCaptain:flog:1.0.0:release@aar'
 ### Sample
 ```java
 FLog.print("Hello FLog");
+
 FLog.tag("FLog").print("Hello FLog");
+
 FLog.tag("FLog").count(4).showThread().showTime().print("Hello FLog");
+
 FLog.tag("FLog").count(100).excludeThis(this).withJson(JSON_STRING).print("Hello FLog");
+
 FLog.tag("FLog").singleLine().showFooterLine().showHeardLine().print("Hello FLog");
 
 ...
@@ -50,4 +54,3 @@ FLog.tag("FLog").singleLine().showFooterLine().showHeardLine().print("Hello FLog
 17. `i()`
 18. `v()`
 19. `print(String message, Object... args)`
-
