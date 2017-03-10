@@ -5,8 +5,8 @@ A friendly, flexible, feature-rich and fair logger for Android.
 - Tag、调用栈、线程信息、时间信息、级别、内容、附加线、极简风格...
 - Tag, call stack, thread information, time information, level, content, additional lines, minimalist style...
 
-## Use
-### Dependencies
+## Usage
+### Add Two Dependencies
 ```groovy
 debugCompile 'com.github.SaltedfishCaptain:flog:1.0.0:debug@aar'
 releaseCompile 'com.github.SaltedfishCaptain:flog:1.0.0:release@aar'
@@ -15,13 +15,9 @@ releaseCompile 'com.github.SaltedfishCaptain:flog:1.0.0:release@aar'
 ### Sample
 ```java
 FLog.print("Hello FLog");
-
 FLog.tag("FLog").print("Hello FLog");
-
 FLog.tag("FLog").count(4).showThread().showTime().print("Hello FLog");
-
 FLog.tag("FLog").count(100).excludeThis(this).withJson(JSON_STRING).print("Hello FLog");
-
 FLog.tag("FLog").singleLine().showFooterLine().showHeardLine().print("Hello FLog");
 
 ...
