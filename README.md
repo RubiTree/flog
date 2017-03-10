@@ -1,6 +1,6 @@
 # FLog
+[![](https://img.shields.io/badge/Version-v1.0.0-green.svg)](https://github.com/SaltedfishCaptain/flog/releases/tag/1.0.0)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/SaltedfishCaptain/flog/blob/master/LICENSE)
-[![](https://img.shields.io/badge/Version-v1.0.0-blue.svg)](https://github.com/SaltedfishCaptain/flog/releases/tag/1.0.0)
 
 A friendly, flexible, feature-rich and fair logger for Android.
 
