@@ -1,5 +1,6 @@
 # FLog
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/SaltedfishCaptain/flog/blob/master/LICENSE)
+
 A friendly, flexible, feature-rich and fair logger for Android.
 
 ## Feature
