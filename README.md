@@ -1,4 +1,5 @@
 # FLog
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/SaltedfishCaptain/flog/blob/master/LICENSE)
 A friendly, flexible, feature-rich and fair logger for Android.
 
 ## Feature
@@ -38,7 +39,6 @@ FLog.tag("FLog").singleLine().showFooterLine().showHeardLine().print("Hello FLog
 8. Reference to the https://github.com/orhanobut/logger so that print content more beautiful
 
 ## APIs
-
 1. `tag(String tag)`
 2. `offset(int offset)`
 3. `count(int count)`
@@ -58,3 +58,6 @@ FLog.tag("FLog").singleLine().showFooterLine().showHeardLine().print("Hello FLog
 17. `i()`
 18. `v()`
 19. `print(String message, Object... args)`
+
+## License
+Apache License 2.0, here is the [LICENSE](https://github.com/SaltedfishCaptain/flog/blob/master/LICENSE)。
