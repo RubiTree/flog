@@ -61,9 +61,11 @@ public class FLogApplication extends Application {
 5. The chain is very flexible to call the configuration of the print content: tag, call stack, thread information, time information, level, content, additional lines, minimalist style...
 6. The configuration process does not require a chain call sequence, as long as the print method is called at the end, the configuration is completed, and begin print.
 7. FLog will not print when the master project is in the release state.
-8. Reference to [logger](https://github.com/orhanobut/logger) to make print content more beautiful.
+8. Reference to [logger](https://github.com/orhanobut/logger) to make print content more pretty.
+9. And use this logger may make your project have a long life.
 
 ## APIs
+to be continue...
 1. `init()...`
 2. `tag(String tag)`
 2. `offset(int offset)`

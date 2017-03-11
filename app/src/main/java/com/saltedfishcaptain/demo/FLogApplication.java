@@ -20,6 +20,6 @@ public class FLogApplication extends Application {
     }
 
     private void configFLog() {
-        FLog.init().count(6).dateFormat("MM_dd hh:mm:ss SSS").v();
+//        FLog.init().count(6).dateFormat("MM_dd hh:mm:ss SSS").v();
     }
 }

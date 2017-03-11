@@ -11,7 +11,16 @@
     >
 
     <TextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello FLog!" />
+
+    <Button
+        android:id="@+id/print_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:text="Print now"
+        android:layout_marginTop="30dp"/>
 </RelativeLayout>
