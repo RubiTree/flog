@@ -31,6 +31,17 @@ public class FLog {
     /*--------------------------------------------------------------------------------------------*/
 
     /**
+     * Suggest call this method only once in application class, begin with init() and end anywhere.
+     * This setting will just replace the default value at each print.
+     * Your new setting at each print will cover this setting.
+     */
+    public static Setting init(){
+        return new Setting();
+    }
+
+    /*--------------------------------------------------------------------------------------------*/
+
+    /**
      * @param tag 每一行Log方框左边显示的标签，默认标签是当前类类名
      */
     public static LogPrinter tag(String tag) {

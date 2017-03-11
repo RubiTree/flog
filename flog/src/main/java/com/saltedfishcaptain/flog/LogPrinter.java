@@ -19,7 +19,7 @@ import java.util.Date;
  * Created by Zhengyu.Xiong ; On 2017-12-06.
  */
 
-public class LogPrinter {
+public final class LogPrinter {
     private static final boolean IS_HIDE_LOG = !BuildConfig.DEBUG;
 
     private static final int LOGCAT_ONCE_PRINT_MAX_SIZE = 4000;
@@ -32,7 +32,8 @@ public class LogPrinter {
     private static final char TOP_LEFT_ROUND_CORNER = '╭';
     private static final char BOTTOM_LEFT_ROUND_CORNER = '╰';
     private static final char MIDDLE_CORNER = '╟';
-    private static final char HORIZONTAL_DOUBLE_LINE = '║';
+    private static final char VERTICAL_DOUBLE_LINE = '║';
+    private static final char VERTICAL_SINGLE_LINE = '│';
     private static final String DOUBLE_DIVIDER = "════════════════════════════════════════════";
     private static final String SINGLE_DIVIDER = "────────────────────────────────────────────";
     private static final String TOP_BORDER = TOP_LEFT_CORNER +
@@ -46,35 +47,35 @@ public class LogPrinter {
     private static final String BOTTOM_LINE = BOTTOM_LEFT_ROUND_CORNER +
             SINGLE_DIVIDER + SINGLE_DIVIDER + SINGLE_DIVIDER;
 
-    private String tag = "";
-    private int logType = Log.DEBUG;
-    private boolean showThreadInfo = false;
-    private boolean isSimpleStyle = false;
-    private boolean showHeardLine = false;
-    private boolean showFooterLine = false;
-    private boolean showCurrentTime = false;
+    private String tag = Setting.tag;
+    private int logType = Setting.logType;
+    private boolean showThreadInfo = Setting.showThreadInfo;
+    private boolean isSimpleStyle = Setting.isSimpleStyle;
+    private boolean showHeardLine = Setting.showHeardLine;
+    private boolean showFooterLine = Setting.showFooterLine;
+    private boolean showCurrentTime = Setting.showCurrentTime;
     private ArrayList<String> errorMsg = new ArrayList<>();
     private String json = "";
     private Object object = null;
 
     // not safe
-    private int methodCount = 2;
-    private int offset = 0;
+    private int methodCount = Setting.methodCount;
+    private int offset = Setting.offset;
     private Class<?>[] excludeClasses;
 
     /*-------------------------------------------------*/
 
     private void resetConfig() {
-        tag = "";
-        methodCount = 2;
-        offset = 0;
-        logType = Log.DEBUG;
-        showThreadInfo = false;
+        tag = Setting.tag;
+        methodCount = Setting.methodCount;
+        offset = Setting.offset;
+        logType = Setting.logType;
+        showThreadInfo = Setting.showThreadInfo;
         excludeClasses = null;
-        isSimpleStyle = false;
-        showHeardLine = false;
-        showFooterLine = false;
-        showCurrentTime = false;
+        isSimpleStyle = Setting.isSimpleStyle;
+        showHeardLine = Setting.showHeardLine;
+        showFooterLine = Setting.showFooterLine;
+        showCurrentTime = Setting.showCurrentTime;
         errorMsg.clear();
         json = "";
         object = null;
@@ -249,7 +250,7 @@ public class LogPrinter {
 
         // 4. check includeStartIndex last
         if (trace.length <= includeStartIndex) {
-            errorMsg.add("You give a too big offset! No stacktrace can be showed");
+            errorMsg.add("You give a too big offset! No stacktrace can be showed.");
             return new StackTraceSegment();
         }
 
@@ -260,7 +261,7 @@ public class LogPrinter {
         int canNotPrintCount = methodCount - maxPrintableTraceSize;
         if (canNotPrintCount > 0) {
             errorMsg.add("Not enough stacktrace can be showed! Just show " +
-                    maxPrintableTraceSize + ", " + canNotPrintCount + " less than except");
+                    maxPrintableTraceSize + ", " + canNotPrintCount + " less than except.");
         }
 
         return new StackTraceSegment(trace, includeStartIndex, count);
@@ -301,7 +302,7 @@ public class LogPrinter {
     // OneLine 模式所有的打印内容，不会打印设置引发的错误信息，也不会打印json和object, 注意兼容其他设置
     private void printAllInSingleLine(StackTraceSegment traceSegment, String msg) {
         printHeardLine();
-        basePrintOneLine(getFormatOneLineContent(traceSegment, msg));
+        basePrintOneLine(VERTICAL_SINGLE_LINE + " " + getFormatOneLineContent(traceSegment, msg));
         printFooterLine();
     }
 
@@ -350,7 +351,7 @@ public class LogPrinter {
     private void printAppropriateStringInMultiline(String content) {
         String[] lines = content.split(System.getProperty("line.separator"));
         for (String line : lines) {
-            basePrintOneLine(HORIZONTAL_DOUBLE_LINE + " " + line);
+            basePrintOneLine(VERTICAL_DOUBLE_LINE + " " + line);
         }
     }
 
@@ -358,14 +359,14 @@ public class LogPrinter {
         if (errorMsg.isEmpty()) return;
 
         for (String errorText : errorMsg) {
-            basePrintOneLine(HORIZONTAL_DOUBLE_LINE + " PrintConfigError: " + errorText);
+            basePrintOneLine(VERTICAL_DOUBLE_LINE + " PrintConfigError: " + errorText);
         }
         printDivider();
     }
 
     private void printThreadInfo() {
         if (showThreadInfo) {
-            basePrintOneLine(HORIZONTAL_DOUBLE_LINE +
+            basePrintOneLine(VERTICAL_DOUBLE_LINE +
                     " Thread: " + Thread.currentThread().getName() + this.toString());
             printDivider();
         }
@@ -373,14 +374,14 @@ public class LogPrinter {
 
     private void printTimeInfo() {
         if (showCurrentTime) {
-            basePrintOneLine(HORIZONTAL_DOUBLE_LINE + " CurrentTime: " + getCurrentTimeString());
+            basePrintOneLine(VERTICAL_DOUBLE_LINE + " CurrentTime: " + getCurrentTimeString());
             printDivider();
         }
     }
 
     private String getCurrentTimeString() {
         Date now = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("MM月dd日 hh:mm:ss SSS毫秒");
+        SimpleDateFormat ft = new SimpleDateFormat(Setting.dataFormat);
         return ft.format(now);
     }
 
@@ -498,14 +499,14 @@ public class LogPrinter {
         StringBuilder builder = new StringBuilder();
         builder.append("[ ")
                 .append(msg)
-                .append(" ][ ");
+                .append(" ]");
         if (showThreadInfo) {
-            builder.append("Thread: ")
+            builder.append("[ Thread: ")
                     .append(Thread.currentThread().getName())
-                    .append(" ][ ");
+                    .append(" ]");
         }
         if (showCurrentTime) {
-            builder.append("Time: ")
+            builder.append("[ Time: ")
                     .append(getCurrentTimeString())
                     .append(" ]");
         }

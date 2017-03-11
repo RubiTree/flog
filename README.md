@@ -5,8 +5,10 @@
 A friendly, flexible, feature-rich and fair logger for Android.
 
 ## Feature
-- Tag、调用栈、线程信息、时间信息、级别、内容、附加线、极简风格...
-- Tag, call stack, thread information, time information, level, content, additional lines, minimalist style...
+1. 自定义Tag、调用栈、线程信息、时间信息、级别、内容、附加线、极简风格...
+2. 打印错误设定报告
+3. 自定义设定默认值
+3. Tag, call stack, thread information, time information, level, content, additional lines, minimalist style...
 
 ## Usage
 ### Add Two Dependencies
@@ -30,18 +32,38 @@ FLog.tag("FLog").singleLine().showFooterLine().showHeardLine().print("Hello FLog
 ...
 ```
 
+### Setting
+This is optional, if you want to use your custom default setting value, you can call init().
+Suggest call this method only once in application class, begin with init() and end anywhere.
+This setting will just replace the default value at each print.
+Your new setting at each print will cover this setting.
+```java
+public class FLogApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        configFLog();
+    }
+
+    private void configFLog() {
+        FLog.init().count(6).dateFormat("MM月dd日 hh:mm:ss SSS").v();
+    }
+}
+```
+
 ## Tips
 1. 通过链式调用非常灵活得对打印内容进行配置：tag、调用栈、线程信息、时间信息、级别、内容、附加线、极简风格...
-2. 配置过程对链式调用顺序没有要求，只要在最后调用print方法，就表示配置结束，开始打印
-3. FLog在主项目处于release状态时不会进行打印
-4. 参考了 https://github.com/orhanobut/logger 让打印内容更加美观
+2. 配置过程对链式调用顺序没有要求，只要在最后调用print方法，就表示配置结束，开始打印。
+3. FLog在主项目处于release状态时不会进行打印。
+4. 参考了 https://github.com/orhanobut/logger 让打印内容更加美观。
 5. The chain is very flexible to call the configuration of the print content: tag, call stack, thread information, time information, level, content, additional lines, minimalist style...
 6. The configuration process does not require a chain call sequence, as long as the print method is called at the end, the configuration is completed, and begin print.
-7. FLog will not print when the master project is in the release state
-8. Reference to the https://github.com/orhanobut/logger so that print content more beautiful
+7. FLog will not print when the master project is in the release state.
+8. Reference to the https://github.com/orhanobut/logger so that print content more beautiful.
 
 ## APIs
-1. `tag(String tag)`
+1. `init()`
+2. `tag(String tag)`
 2. `offset(int offset)`
 3. `count(int count)`
 4. `exclude(Class<?>... excludeClasses)`
@@ -62,4 +84,4 @@ FLog.tag("FLog").singleLine().showFooterLine().showHeardLine().print("Hello FLog
 19. `print(String message, Object... args)`
 
 ## License
-Apache License 2.0, here is the [LICENSE](https://github.com/SaltedfishCaptain/flog/blob/master/LICENSE)。
+Apache License 2.0, here is the [LICENSE](https://github.com/SaltedfishCaptain/flog/blob/master/LICENSE).
