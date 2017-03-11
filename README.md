@@ -36,7 +36,7 @@ FLog.tag("FLog").singleLine().showFooterLine().showHeardLine().print("Hello FLog
 
 ### Setting
 This is optional, if you want to use your custom default setting value, you can go on reading.</br>
-Suggest you call this method only once in Application class, begin with init() and end at anywhere.</br>
+Suggest that call this method only once in Application class, begin with init() and end at anywhere.</br>
 This setting will just replace the default value at each print.</br>
 Your new setting at each print will cover this setting.
 ```java

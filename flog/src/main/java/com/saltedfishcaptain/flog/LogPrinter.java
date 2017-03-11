@@ -317,7 +317,6 @@ public final class LogPrinter {
     }
 
     private void printHeaderContent(StackTraceSegment validStackTraceSegment) {
-        printErrorInfo();
         printThreadInfo();
         printTimeInfo();
         printStackTraceSegment(validStackTraceSegment);
@@ -330,6 +329,7 @@ public final class LogPrinter {
     private void printAppendContent() {
         printJsonData();
         printObjectData();
+        printErrorInfo();
     }
 
     /*--------------------------------------------------------------------------------------------*/
@@ -355,15 +355,6 @@ public final class LogPrinter {
         }
     }
 
-    private void printErrorInfo() {
-        if (errorMsg.isEmpty()) return;
-
-        for (String errorText : errorMsg) {
-            basePrintOneLine(VERTICAL_DOUBLE_LINE + " PrintConfigError: " + errorText);
-        }
-        printDivider();
-    }
-
     private void printThreadInfo() {
         if (showThreadInfo) {
             basePrintOneLine(VERTICAL_DOUBLE_LINE +
@@ -383,6 +374,15 @@ public final class LogPrinter {
         Date now = new Date();
         SimpleDateFormat ft = new SimpleDateFormat(Setting.dataFormat);
         return ft.format(now);
+    }
+
+    private void printErrorInfo() {
+        if (errorMsg.isEmpty()) return;
+
+        printDivider();
+        for (String errorText : errorMsg) {
+            basePrintOneLine(VERTICAL_DOUBLE_LINE + " PrintConfigError: " + errorText);
+        }
     }
 
     private void printJsonData() {
@@ -470,7 +470,6 @@ public final class LogPrinter {
 
     private String getFormatJson(String json) {
         if (TextUtils.isEmpty(json)) {
-            errorMsg.add("You give a empty Json!");
             return "";
         }
 
