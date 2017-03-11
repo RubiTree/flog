@@ -66,6 +66,7 @@ public class FLogApplication extends Application {
 
 ## APIs
 to be continue...
+
 1. `init()...`
 2. `tag(String tag)`
 2. `offset(int offset)`
