@@ -3,8 +3,6 @@ package com.saltedfishcaptain.flog;
 import android.text.TextUtils;
 import android.util.Log;
 
-import java.util.ArrayList;
-
 /**
  * Description:
  * <p>
