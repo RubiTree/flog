@@ -34,8 +34,11 @@ FLog.tag("FLog").singleLine().showFooterLine().showHeardLine().print("Hello FLog
 
 ### Setting
 This is optional, if you want to use your custom default setting value, you can call init().
+
 Suggest call this method only once in application class, begin with init() and end anywhere.
+
 This setting will just replace the default value at each print.
+
 Your new setting at each print will cover this setting.
 ```java
 public class FLogApplication extends Application {
@@ -46,7 +49,7 @@ public class FLogApplication extends Application {
     }
 
     private void configFLog() {
-        FLog.init().count(6).dateFormat("MM月dd日 hh:mm:ss SSS").v();
+        FLog.init().count(6).dateFormat("MM_dd hh:mm:ss SSS").v();
     }
 }
 ```
