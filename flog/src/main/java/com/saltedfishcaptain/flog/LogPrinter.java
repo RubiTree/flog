@@ -302,7 +302,7 @@ public final class LogPrinter {
     // OneLine 模式所有的打印内容，不会打印设置引发的错误信息，也不会打印json和object, 注意兼容其他设置
     private void printAllInSingleLine(StackTraceSegment traceSegment, String msg) {
         printHeardLine();
-        basePrintOneLine(VERTICAL_SINGLE_LINE + " " + getFormatOneLineContent(traceSegment, msg));
+        basePrintOneLine(getFormatOneLineContent(traceSegment, msg));
         printFooterLine();
     }
 
@@ -497,22 +497,22 @@ public final class LogPrinter {
 
     private String getFormatOneLineContent(StackTraceSegment traceSegment, String msg) {
         StringBuilder builder = new StringBuilder();
-        builder.append("[ ")
+        builder.append(" █▶ ")
                 .append(msg)
-                .append(" ]");
+                .append(" ◀█ ");
         if (showThreadInfo) {
-            builder.append("[ Thread: ")
+            builder.append(" █▶ Thread: ")
                     .append(Thread.currentThread().getName())
-                    .append(" ]");
+                    .append(" ◀█ ");
         }
         if (showCurrentTime) {
-            builder.append("[ Time: ")
+            builder.append(" █▶ Time: ")
                     .append(getCurrentTimeString())
-                    .append(" ]");
+                    .append(" ◀█ ");
         }
         if (!traceSegment.isEmpty) {
             StackTraceElement trace = traceSegment.getFirstTrace();
-            builder.append("[ ")
+            builder.append(" █▶ ")
                     .append(getSimpleClassName(trace.getClassName()))
                     .append(".")
                     .append(trace.getMethodName())
@@ -520,7 +520,7 @@ public final class LogPrinter {
                     .append(trace.getFileName())
                     .append(":")
                     .append(trace.getLineNumber())
-                    .append(")]");
+                    .append(") ◀█ ");
         }
         return builder.toString();
     }

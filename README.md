@@ -64,7 +64,7 @@ public class FLogApplication extends Application {
 8. Reference to [logger](https://github.com/orhanobut/logger) to make print content more beautiful.
 
 ## APIs
-1. `init()`
+1. `init()...`
 2. `tag(String tag)`
 2. `offset(int offset)`
 3. `count(int count)`
