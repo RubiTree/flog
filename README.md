@@ -18,7 +18,7 @@ A friendly, flexible, feature-rich and fair logger for Android.
 debugCompile 'com.github.SaltedfishCaptain:flog:1.0.0:debug@aar'
 releaseCompile 'com.github.SaltedfishCaptain:flog:1.0.0:release@aar'
 ```
-If you have not use library frome jitpack before, you should add this in your project build.gradle.
+If you have not use library from JitPack before, you should add this in your project build.gradle.
 ```groovy
 allprojects {
     repositories {
