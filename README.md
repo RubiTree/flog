@@ -7,7 +7,7 @@ A friendly, flexible, feature-rich and fair logger for Android.
 ## Feature
 1. 自定义Tag、调用栈、线程信息、时间信息、级别、内容、附加线、极简风格...
 2. 打印错误设定报告
-3. 自定义设定默认值
+3. 自定义所有设定的默认值
 3. Tag, call stack, thread information, time information, level, content, additional lines, minimalist style...
 
 ## Usage
