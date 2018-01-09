@@ -1,5 +1,5 @@
 # FLog
-[![](https://img.shields.io/badge/Version-v1.0.0-green.svg)](https://github.com/SaltedfishCaptain/flog/releases/tag/1.0.0)
+[![](https://img.shields.io/badge/Version-v1.0.1-green.svg)](https://github.com/SaltedfishCaptain/flog/releases/tag/1.0.1)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/SaltedfishCaptain/flog/blob/master/LICENSE)
 
 A friendly, flexible, feature-rich and fair logger for Android.
@@ -15,8 +15,8 @@ A friendly, flexible, feature-rich and fair logger for Android.
 ## Usage
 ### Add Two Dependencies
 ```groovy
-debugCompile 'com.github.SaltedfishCaptain:flog:1.0.0:debug@aar'
-releaseCompile 'com.github.SaltedfishCaptain:flog:1.0.0:release@aar'
+debugCompile 'com.github.SaltedfishCaptain:flog:1.0.1:debug@aar'
+releaseCompile 'com.github.SaltedfishCaptain:flog:1.0.1:release@aar'
 ```
 If you have not use library from JitPack before, you should add this in your project build.gradle.
 ```groovy
