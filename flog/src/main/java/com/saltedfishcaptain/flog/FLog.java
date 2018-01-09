@@ -152,6 +152,15 @@ public class FLog {
 
     /*-------------------------------------------------*/
 
+    /**
+     * 增加自定义log处理步骤
+     */
+    public static LogPrinter setHandler(LogHandler logHandler) {
+        return getPrinter().setHandler(logHandler);
+    }
+
+    /*-------------------------------------------------*/
+
     public static void todo(){
         getPrinter().todo();
     }

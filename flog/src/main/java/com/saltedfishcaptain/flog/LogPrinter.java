@@ -54,6 +54,8 @@ public final class LogPrinter {
     private boolean showHeardLine = Setting.showHeardLine;
     private boolean showFooterLine = Setting.showFooterLine;
     private boolean showCurrentTime = Setting.showCurrentTime;
+    private LogHandler logHandler = Setting.logHandler;
+
     private ArrayList<String> errorMsg = new ArrayList<>();
     private String json = "";
     private Object object = null;
@@ -76,6 +78,7 @@ public final class LogPrinter {
         showHeardLine = Setting.showHeardLine;
         showFooterLine = Setting.showFooterLine;
         showCurrentTime = Setting.showCurrentTime;
+        logHandler = Setting.logHandler;
         errorMsg.clear();
         json = "";
         object = null;
@@ -197,6 +200,11 @@ public final class LogPrinter {
         return this;
     }
 
+    public LogPrinter setHandler(LogHandler logHandler) {
+        this.logHandler = logHandler;
+        return this;
+    }
+
     /*-------------------------------------------------*/
 
     public void print(String message, Object... args) {
@@ -219,6 +227,9 @@ public final class LogPrinter {
             validateTag(validStackTraceSegment);
 
             String message = createMessage(msg, args);
+
+            if (logHandler != null) logHandler.handLog(logType, tag, message);
+
             if (isSimpleStyle) {
                 printAllInSingleLine(validStackTraceSegment, message);
             } else {
@@ -511,7 +522,7 @@ public final class LogPrinter {
         }
         if (!traceSegment.isEmpty) {
             StackTraceElement trace = traceSegment.getFirstTrace();
-            builder.append(" █▶ ")
+            builder.append(" [ ")
                     .append(getSimpleClassName(trace.getClassName()))
                     .append(".")
                     .append(trace.getMethodName())
@@ -519,7 +530,7 @@ public final class LogPrinter {
                     .append(trace.getFileName())
                     .append(":")
                     .append(trace.getLineNumber())
-                    .append(") ◀█ ");
+                    .append(") ]");
         }
         return builder.toString();
     }

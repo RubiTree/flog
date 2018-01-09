@@ -1,6 +1,9 @@
 package com.saltedfishcaptain.demo;
 
+import android.util.Log;
+
 import com.saltedfishcaptain.flog.FLog;
+import com.saltedfishcaptain.flog.LogHandler;
 
 /**
  * Description:
@@ -44,5 +47,14 @@ public class FLogTestCase {
                 .print("Hello FLog ! Config : count(100).singleLine().showFooterLine().showHeardLine()");
 
         FLog.tag("FLog").offset(100).withJson(JSON_STRING).print("Hello FLog ! Config : offset(100).withJson(JSON_STRING)");
+
+        FLog.tag("FLog").singleLine().showTime().print("singleLine().showTime()");
+
+        FLog.tag("FLog").singleLine().showTime().setHandler(new LogHandler() {
+            @Override
+            public void handLog(int logType, String tag, String msg) {
+                Log.e(tag, msg);
+            }
+        }).print("singleLine().showTime()");
     }
 }

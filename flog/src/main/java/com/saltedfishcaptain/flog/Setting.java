@@ -12,7 +12,7 @@ import android.util.Log;
  */
 
 public final class Setting {
-    static String dataFormat = "MM月dd日 hh:mm:ss SSS毫秒";
+    static String dataFormat = "MM月dd日 HH:mm:ss (SSS'ms')";
     static String tag = "";
     static int methodCount = 2;
     static int offset = 0;
@@ -22,6 +22,7 @@ public final class Setting {
     static boolean showHeardLine = false;
     static boolean showFooterLine = false;
     static boolean showCurrentTime = false;
+    static LogHandler logHandler = null;
 
     /*--------------------------------------------------------------------------------------------*/
 
@@ -98,6 +99,11 @@ public final class Setting {
 
     public Setting dateFormat(String dataFormat) {
         Setting.dataFormat = dataFormat;
+        return this;
+    }
+
+    public Setting setHandler(LogHandler logHandler) {
+        Setting.logHandler = logHandler;
         return this;
     }
 }
